@@ -9,10 +9,14 @@ public class FileScrape {
 	private ArrayList paths_list = new ArrayList();
 	private ArrayList folderpaths_list = new ArrayList();
 	
+	//function to scrape through a provided directory and save the file name, file path, folder name, folder path, and last modified date into lists
 	void scrape(String x_src){
+		//This is currently tailored towards PDFs so the extension length is set as the length of ".xxx" 
 		int extensionlength = 4;
 		File temp_dir = new File(x_src);
 		File [] dir_filelist = temp_dir.listFiles();
+		//cycle through all items in the given directory.  If the item is a pdf file, the item's data is added to the lists.
+		//Recursion is used if the item is a directory and then the items in the new directory are cycled through again.
 		for(int x = 0; x < dir_filelist.length; x++){
 			String temp_file_name = dir_filelist[x].getName().toLowerCase();
 			if(dir_filelist[x].isFile() && temp_file_name.endsWith(".pdf")){
@@ -33,6 +37,7 @@ public class FileScrape {
 		}
 	}
 	
+	//Methods to return the lists.
 	ArrayList getnameslist(){
 		return names_list;
 	}

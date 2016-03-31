@@ -24,6 +24,7 @@ public class ExcelPackager {
 	
 	
 	void makesheet(ArrayList names, ArrayList<Date> dates, ArrayList paths, ArrayList folders, ArrayList folderpaths, String sheet_title){
+		//iterators are created to cycle through the lists
 		names_it = names.listIterator();
 		paths_it = paths.listIterator();
 		folders_it = folders.listIterator();
@@ -35,6 +36,7 @@ public class ExcelPackager {
 		cell_style_date.setDataFormat(create_helper.createDataFormat().getFormat("mm/dd/yyyy hh:mm"));        
         int rowid = 1;
         int cellid = 0;               
+        
         Row header_row = new_sheet.createRow(0);
         Cell HeaderCell_1 = header_row.createCell(0);
         HeaderCell_1.setCellValue("Folder");
@@ -44,6 +46,7 @@ public class ExcelPackager {
         HeaderCell_3.setCellValue("Date");
         int count = 0;
         System.out.println("creating excel sheet...");
+        //add data to the cells
         while(names_it.hasNext()){
             XSSFHyperlink file_link = create_helper.createHyperlink(Hyperlink.LINK_FILE);
             XSSFHyperlink folder_link = create_helper.createHyperlink(Hyperlink.LINK_FILE);
@@ -82,6 +85,7 @@ public class ExcelPackager {
         new_sheet.setAutoFilter(CellRangeAddress.valueOf("A1:C1"));
 	}
 	
+	//Method to close the workbook
 	void closebook(String dest_path){
 		try{
         	FileOutputStream fileout = new FileOutputStream(new File(dest_path));
