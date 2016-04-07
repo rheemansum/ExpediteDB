@@ -1,15 +1,11 @@
-This is a personal project that was created to automate the construction of a database with data pulled from multiple sources.  The program is essentially broken up into 4 sections.
+This is a personal project that was created to scour a tree of folders for pdf files and construct an excel database.
 
-Section 1
-An excel workbook and the necessary sheets and formatting helpers and setup here.
+The program was updated to essentially be more robust and versatile by not restricting which directories it could search and how deep it could dig.
 
-Section 2
-A maintained access database already exists on the network, but unfortunately, there is some trouble accessing the file.  I believe this is due to security reasons.  The workaround is to copy and paste the file onto the local drive and access it from there.  The code then pulls data and writes it to the excel file.
+The FileScrape class will pull the file name, the folder name, file path, folder path, and last modified date in array lists.  If additional folders exist, the program uses recursion to dig into each folder and repeat.
 
-Section 3
-The code searches through a forest of folders and files located on the network and pulls the file name, modified date, and hyperlink to the file.
+Calling the ExcelPackager class will package the package the file, folder, and last modified date into 3 columns in an excel file, with hyperlinks to each file and folder.
 
-Section 4
-Another forest of folders exists and the code does the same as section 3, but also adds in the folder name because valuable information is stored in there.
-
-Everything is written to the excel file.  The proper formatting is applied and the file is closed.
+The next changes that need to be made are the following:
+1. Possibly transitioning form ArrayLists to Hashmaps.
+2. Adding a GUI interface.
